@@ -83,6 +83,16 @@ a { text-decoration: none; color: inherit; }
 .prose ul { padding-left: 1.1em; margin: 0 0 1.4em; }
 .prose li { font-size: 16px; line-height: 1.6; color: var(--muted); margin-bottom: .55em; }
 .prose li a { word-break: break-word; }
+.prose code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.85em; background: rgba(236, 232, 225, 0.08); border-radius: 3px;
+  padding: 0.15em 0.4em;
+}
+.prose pre {
+  background: rgba(236, 232, 225, 0.05); border: 1px solid var(--line);
+  border-radius: 6px; padding: 18px 20px; margin: 0 0 1.6em; overflow-x: auto;
+}
+.prose pre code { background: none; padding: 0; font-size: 14px; line-height: 1.6; color: rgba(236, 232, 225, 0.78); }
 
 /* Footer */
 .footer { border-top: 1px solid var(--line); margin-top: 20px; }

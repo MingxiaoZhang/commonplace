@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ambit — The Commonplace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&display=swap">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<header class="site-head">
+  <a class="masthead-link" href="index.html">The Commonplace</a>
+</header>
+<main class="reading">
+  <article>
+    <div class="article-head reveal">
+      <h1 class="display article-title">Ambit</h1>
+      <div class="article-date">A permissions library for AI agents — deny always wins</div>
+    </div>
+    <div class="prose reveal">
+<p>Without ambit, a hallucinating model can call <code>delete_database</code>, <code>send_email</code>, or any other tool in its registry — the only limit is what was registered. With ambit, a plain YAML file is the limit.</p>
+<pre><code>npm install agent-ambit</code></pre>
+<h2>How it works</h2>
+<p>Ambit wraps a tool registry and checks every call against a policy before the underlying function runs, regardless of which client or model is driving the agent:</p>
+<pre><code>import { wrap } from "agent-ambit";
+
+const guard = wrap(myTools, { policy: "policy.yaml" });
+
+// Blocked calls throw PermissionDeniedError with instructions for the fix.
+// Allowed calls pass through to the original function unchanged.
+const result = await guard.call("read_file", { path: "/tmp/data.csv" });</code></pre>
+<p>A policy is one readable file, not code scattered through the tool implementations:</p>
+<pre><code># policy.yaml
+tier: operator        # readonly | operator | admin
+
+# operator allows all tools by default.
+# List only the tools you want to restrict.
+deny:
+  - delete_file
+  - filesystem:write_file   # scoped to the "filesystem" MCP server only
+  - run_shell               # applies to all servers (no prefix)</code></pre>
+<p><code>readonly</code> denies everything by default and asks you to opt tools into <code>allow</code>. <code>operator</code> allows everything except tools that read as destructive by name — <code>delete_file</code>, <code>dropTable</code>, <code>purge_cache</code> — unless you explicitly allow them. <code>admin</code> allows everything, including destructive-sounding tools, with no built-in carve-out. Across all three, a tool listed in both <code>allow</code> and <code>deny</code> is denied — deny always wins.</p>
+<h2>What it does and doesn't protect against</h2>
+<p><strong>Defends against:</strong> a hallucinating or prompt-injected model calling tools it shouldn't. The check happens server-side, before the tool function runs.</p>
+<p><strong>Does not defend against:</strong></p>
+<ul>
+<li>A fully compromised process — ambit is not a sandbox. If the runtime itself is compromised, the check can be bypassed.</li>
+<li>Parameter-level misuse of an authorized tool — ambit controls which tools are called, not what arguments they receive.</li>
+<li>A malicious server you chose to wrap — ambit enforces your policy against your registry, not against the registry's own intentions.</li>
+</ul>
+<hr />
+<p>This page covers the core idea. The full README, architecture notes, usage guide, and threat model live on GitHub: <a href="https://github.com/MingxiaoZhang/ambit#readme" target="_blank" rel="noopener">github.com/MingxiaoZhang/ambit →</a></p>
+    </div>
+  </article>
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <a class="masthead-link small" href="index.html">The Commonplace</a>
+    <span class="footer-sig">Michael Zhang, 2026</span>
+  </div>
+</footer>
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('is-visible');});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+})();
+</script>
+</body>
+</html>
