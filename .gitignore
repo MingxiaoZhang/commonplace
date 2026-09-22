@@ -1,0 +1,11 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# only relevant if you later add a toolchain
+node_modules/
+dist/
+.cache/
