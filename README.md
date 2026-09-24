@@ -4,7 +4,7 @@ A small static site. No build step, no dependencies — just open `index.html`.
 
 ## Files
 - `index.html` — the home page (masthead, Written, Made)
-- `would-it-still-be-me.html`, `palantir-moat.html` — the essay reading pages
+- `would-it-still-be-me.html`, `palantir-moat.html`, `the-difficulty-was-the-moat.html` — the essay reading pages
 - `style.css` — all styling (edit the `--accent` variable at the top to change the mood)
 - `*.md` — the source text for each essay, kept for reference
 

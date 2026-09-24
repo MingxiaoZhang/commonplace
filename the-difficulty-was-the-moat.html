@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Difficulty Was the Moat — The Commonplace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&display=swap">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<header class="site-head">
+  <a class="masthead-link" href="index.html">The Commonplace</a>
+</header>
+<main class="reading">
+  <article>
+    <div class="article-head reveal">
+      <h1 class="display article-title">The Difficulty Was the Moat</h1>
+      <div class="article-date">September 2026</div>
+    </div>
+    <div class="prose reveal">
+<p>Figma is one of the better companies I've looked at, yet its stock has lost most of its value since it went public. It listed at $33 in 2025, touched $143 on its first day, and fell to around $17 by the next spring.</p>
+<p>Ask why and you'll hear the same one-word answer: AI. When Anthropic's Claude Design shipped, the stock fell hard, and the story wrote itself. AI can make design now, so the design company is in trouble. That's probably right, but it's the kind of right that explains nothing. Why does AI generating interfaces threaten Figma specifically, when Figma is racing to build the same AI into its own product? The obvious answer skips the actual mechanism. When I went looking for it, I ended up somewhere uncomfortable: the thing that made Figma valuable and the thing now threatening it turn out to be the same thing.</p>
+<p>Figma's moat was never really the software. It was difficulty. Producing good design took skill and iteration, so teams needed a dedicated place to do that hard thing together, and Figma became that place. The collaboration, the shared file as the source of truth, the years of workflow baked into how companies operate: all of it exists because design was hard enough to need a specialized home. A moat is always built around something scarce. Figma's was built around the scarcity of design.</p>
+<p>Now watch what a tool like Figma Make does. It lets someone describe an interface and get one back. Point a PM, a founder, or a marketer at it and they can produce something usable without a designer in the room. The optimistic reading is that this brings more people into design. But push it one step further and it isn't expansion, it's dissolution: if anyone can describe a product and receive it, there is no separate design step and no separate designer. Design stops being a hard thing you go somewhere special to do. It becomes a sentence you type.</p>
+<p>And here is the part that reframes everything. Figma's moat was built around design being hard. Make design easy and you haven't just threatened the product, you've removed the reason the moat exists. The walls still stand for a while, but they now enclose empty space.</p>
+<p>The bull's hope is that Figma transforms its purpose: stops being where you produce design and becomes where you judge and commit it, the review surface over AI generation, whichever AI did the generating. Maybe. But this is where the question I can't get past shows up.</p>
+<p>In a world where design is hard, Figma and an AI lab like Anthropic are in different businesses. Figma owns the specialized craft workflow; the lab just generates images. They barely compete, because the hard part is the part Figma owns. Make design easy, though, and both products collapse into the same thing: a box you describe an interface to. Figma Make and Claude Design converge. There is nothing left between them, because the thing between them was the difficulty. And in that convergence the lab wins, because it owns the model and Figma is renting one. Figma's edge was never the AI. It was the hard-craft layer around the AI. Take that away and Figma is a worse-positioned Anthropic.</p>
+<p>The instinct is to say design won't fully collapse, because judgment survives, and judgment is human. But that's the mistake I almost made. Easy was never going to mean AI is as good as a designer. It means the model generates ten versions and a person picks one, and picking is cheap. Judgment doesn't save the designer; it shrinks to an afternoon of choosing. The residue is real and it is small.</p>
+<p>And this is the part people miss when they wait for the moment AI "beats" designers, as if there's a line it crosses one day. There's no line. Generate-and-pick doesn't need AI to win; it just needs to keep getting cheaper and good enough for more cases, and it chips away at the bottom of the market first, the quick prototypes and single-stakeholder screens, then works upward. It's gradual, it's already happening, and the stock already reflects it. The eighty percent drop isn't the market pricing a future event. It's the market watching a slope that has already started to tilt.</p>
+<p>Figma is a good company on the wrong side of a paradigm shift. Its moat was difficulty, and difficulty is the one thing AI is built to erode. That's the whole problem, and no amount of quality fixes it.</p>
+<p>Figma is just where I happened to notice it. The bigger question is how much of what we call a moat is really difficulty in disguise, and what happens to all of it when difficulty becomes the cheapest thing to buy.</p>
+<hr />
+<h2>Sources</h2>
+<ul>
+<li>Figma's IPO and stock decline: <a href="https://www.investing.com/news/stock-market-news/figma-stock-analysis-ipo-hangover-strong-fundamentals-and-a-contested-valuation-93CH-4906299">Investing.com</a> and <a href="https://www.fool.com/investing/2026/07/10/why-figma-stock-lost-52-in-the-first-half-of-2026/">The Motley Fool</a></li>
+<li>Claude Design as the primary selloff catalyst: <a href="https://www.tikr.com/blog/figma-stock-is-down-83-from-its-ipo-era-highs-heres-what-could-drive-the-next-move">TIKR</a></li>
+<li>Figma Make, Figma's own generative-design tool: <a href="https://www.magicpatterns.com/blog/claude-design-vs-figma-make">Magic Patterns</a></li>
+</ul>
+    </div>
+  </article>
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <a class="masthead-link small" href="index.html">The Commonplace</a>
+    <span class="footer-sig">Michael Zhang, 2026</span>
+  </div>
+</footer>
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('is-visible');});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+})();
+</script>
+</body>
+</html>
