@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agora — The Commonplace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&display=swap">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<header class="site-head">
+  <a class="masthead-link" href="index.html">The Commonplace</a>
+</header>
+<main class="reading">
+  <article>
+    <div class="article-head reveal">
+      <h1 class="display article-title">Agora</h1>
+      <div class="article-date">Learn by discussing, not summarizing</div>
+    </div>
+    <div class="prose reveal">
+<p>Agora is a method for learning from books, talks, and articles with an AI partner, without handing it your thinking. Most AI study tools summarize for you or quiz you. Agora does neither. It makes the facts cheap and leaves the judging to you.</p>
+<pre><code>Resume → Spark → Debrief → Read → Discuss → Converge → Synthesize → Close</code></pre>
+<h2>How a session runs</h2>
+<p>Every session opens with a <strong>hook</strong>: a small, catchy exercise where you commit to a guess or a choice before you know the answer. For example:</p>
+<blockquote><p>"A team made contract review 40% faster. Success or failure? You have 90 seconds." Decide, then write the one question you'd ask the team to settle it.</p></blockquote>
+<p>Then you <strong>discuss</strong> the idea behind the source, not just the source itself. The agent holds positions and concedes only to arguments. Facts and current consensus come with citations whenever you ask. When the discussion starts circling, a convergence rule kicks in: state the core idea, research the foundational why, and reach a provisional conclusion.</p>
+<p>At the end you write what you now believe, in your own words. Agora keeps a record of your positions, how they changed, and any new ideas you had along the way, as plain markdown and YAML in a repo you own. Over time that record reads like your own book discussion.</p>
+<h2>How it's built</h2>
+<p>Agora is a way of reading and thinking first, and software second. The core is plain text: how a session runs, how hooks are made, how discussion works, and how records are kept. Surfaces run that core in different places: a Claude skill, a custom GPT, an AGENTS.md for coding agents, and later voice. They're generated from the core, so they never drift from it.</p>
+<h2>What it isn't</h2>
+<ul>
+<li>Not a quiz or flashcard app.</li>
+<li>Not a summarizer. It never writes your notes for you.</li>
+<li>Not a book distributor. No source text lives in the records beyond short cited excerpts.</li>
+</ul>
+<hr />
+<p>Agora is at v0: the method, the record formats, and three text surfaces, tested first on 《AI未来已来》. The repository isn't public yet.</p>
+    </div>
+  </article>
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <a class="masthead-link small" href="index.html">The Commonplace</a>
+    <span class="footer-sig">Michael Zhang, 2026</span>
+  </div>
+</footer>
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('is-visible');});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+})();
+</script>
+</body>
+</html>

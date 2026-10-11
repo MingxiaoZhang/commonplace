@@ -115,3 +115,6 @@ a { text-decoration: none; color: inherit; }
   .prose p { font-size: 18px; }
   .entry-row { flex-direction: column; align-items: flex-start; gap: 6px; }
 }
+
+.prose blockquote { margin: 0 0 1.4em; padding: 2px 0 2px 20px; border-left: 2px solid var(--accent); }
+.prose blockquote p { font-style: italic; color: rgba(236, 232, 225, 0.78); margin: 0; }
